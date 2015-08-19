@@ -1,0 +1,1 @@
+From Pro AngularJs book. Uses AngularJs, Bootstrap on frontend. Node (Deployd & Mongo) on backend as API server. 
