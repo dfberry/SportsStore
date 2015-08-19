@@ -1,4 +1,4 @@
-﻿/// <reference path="../angular.js" />
+﻿/// <reference path="../static/angular.js" />
 
 angular.module("sportsStore")
     .constant("productListActiveClass", "btn-primary")

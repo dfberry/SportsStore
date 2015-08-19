@@ -1,4 +1,4 @@
-﻿/// <reference path="../angular.js" />
+﻿/// <reference path="../static/angular.js" />
 
 
 angular.module("customFilters", [])
@@ -47,6 +47,3 @@ angular.module("customFilters", [])
         }
     }
 });
-
-
-asdfasdfasdf
