@@ -1,0 +1,9 @@
+{
+    "comment": "Deployd app, make sure node & mongo are in path",
+    "comment-args": "on port 5500, start up Admin dashboard immediately",
+    "version": "0.1.0",
+    "command": "dpd",
+    "args": ["-p", "5500", "-d", "deployd/sportsStore/app.dpd"],
+    "isShellCommand": true
+
+}
