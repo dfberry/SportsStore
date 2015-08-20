@@ -12,5 +12,5 @@ From Pro AngularJs book. Uses AngularJs, Bootstrap on frontend. Node (Deployd & 
 * /deployd/sportsStore/app.dpd - deployd app
 
 ###SERVICES
-*Node is used to server static files (.css, .js) only at this point
-*Deployd is the down & dirty api server to get to the data 
+* Node is used to server static files (.css, .js) only at this point
+* Deployd is the down & dirty api server to get to the data 
