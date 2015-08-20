@@ -5,15 +5,12 @@
   "main": "server.js",
   "dependencies": {
     "connect": "^3.4.0",
-    "serve-static": "^1.10.0",
     "st": "^0.5.5"
   },
   "devDependencies": {
     "grunt": "^0.4.5",
     "grunt-cli": "^0.1.13",
-    "grunt-parallel": "^0.4.1",
-    "grunt-run": "^0.3.0",
-    "grunt-spawn": "^1.1.72"
+    "grunt-parallel": "^0.4.1"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
