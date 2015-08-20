@@ -12,19 +12,41 @@ module.exports = function(grunt) {
 					]
 				
 			}
-		}			
+		},
+		spawn: {
+			dpd: {
+				command: "dpd",
+				commandArgs: [
+						
+				], 
+				directory: "deployd/sportsStore/"
+			},
+		},
+		parallel: {
+    		web: {
+				options: {
+      				stream: true
+    			},
+				tasks: [
+					{cmd: 'dpd', args: ['-p','5050','-d','deployd/sportsStore/app.dpd']},
+					{cmd: 'node', args: ['server.js']}
+				]
+      		}
+    	}
 	});
 	
-	grunt.loadNpmTasks('grunt-run');
+	// using spawn because I get a spawn error from grunt-run -- probably a path issue
+	//grunt.loadNpmTasks('grunt-spawn');
 	
-	grunt.registerTask(
-		'live', 
-		[
-			//'run:deployd_server',
-			'run:node_server'
-		]
-	);
+	// using to run node
+	//grunt.loadNpmTasks('grunt-run');
+
+	// run parallel tasks	
+	grunt.loadNpmTasks('grunt-parallel');
+
 	
-	grunt.registerTask('default', ["live"]);
+	//grunt.registerTask('live',['run:node_server','spawn:dpd']);
+	
+	grunt.registerTask('default', ["parallel"]);
 	
 };

@@ -11,7 +11,9 @@
   "devDependencies": {
     "grunt": "^0.4.5",
     "grunt-cli": "^0.1.13",
-    "grunt-run": "^0.3.0"
+    "grunt-parallel": "^0.4.1",
+    "grunt-run": "^0.3.0",
+    "grunt-spawn": "^1.1.72"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
