@@ -1,7 +1,7 @@
 ﻿/// <reference path="../static/angular.js" />
 
 angular.module("sportsStore")
-.constant("dataUrl", "http://localhost:5500/products")
+.constant("dataUrl", "http://localhost:5050/products")
 .controller("sportsStoreCtrl", function ($scope, $http, dataUrl) {
 
 

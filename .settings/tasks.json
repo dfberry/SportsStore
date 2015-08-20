@@ -1,9 +1,27 @@
 {
-    "comment": "Deployd app, make sure node & mongo are in path",
-    "comment-args": "on port 5500, start up Admin dashboard immediately",
+    "comment": "all services needed to run this app",
     "version": "0.1.0",
-    "command": "dpd",
-    "args": ["-p", "5500", "-d", "deployd/sportsStore/app.dpd"],
-    "isShellCommand": true
-
+    "tasks":[
+        {
+            "comment": "Deployd app, make sure node & mongo are in path",
+            "comment-args": "on port 5500, start up Admin dashboard immediately",
+            "taskName": "dpd",
+            "command": "dpd",
+            "isShellCommand": true,
+            "args": ["-p", "5500", "-d", "deployd/sportsStore/app.dpd"],
+            "isBuildCommand": false
+            "showOutput": "always"
+            
+        },
+        {
+            "comment": "Node for static files",
+            "taskName": "node",
+            "command": "node",
+            "isShellCommand": true,
+            "args": ["server.js"],
+            "isBuildCommand": false
+            "showOutput": "always"
+            
+        }        
+    ]
 }

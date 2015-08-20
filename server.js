@@ -1,22 +1,44 @@
-// DFB: this returns the static files via http
-// all logic is through Deployd apis on a different port
+/*******************************************************************
+* 1. begin node service for static files: "node server.js"
+* 2. begin node service for api calls: "/deployd/sportsstore/dpd -d"
+* 
+*******************************************************************/
 
-//https://github.com/senchalabs/connect
+// middleware
 var connect = require('connect');
 
-//https://www.npmjs.com/package/serve-static
-var serveStatic = require('serve-static')
+// http functionality
+var http = require('http');
+
+// server static files
+var serverStatic = require('st');
 
 
-// constants
-var FOLDER_STATIC_FILES = 'static';
+/******************************************************/
 
-// Serve up public/ftp folder 
-var serve = serveStatic(FOLDER_STATIC_FILES);
+// set folder location to server files from
+var static = serverStatic({path: '', url: '/'});
+
+// create middleware application
+var app = connect();
+
+// respond to all requests 
+app.use(function(req, res){
+
+  // process static requests
+  var staticHandled = static(req, res);
+
+  // if static, return
+  if (staticHandled)
+    return;
+  else
+    res.end('this is not a static file');
+
+});
 
 
-connect.createServer(
-	
-	connect.static("../static")
-	
-).listen(5000);
+// create http server
+var server = http.createServer(app);
+
+// server listens on port 5000
+server.listen(5000);
