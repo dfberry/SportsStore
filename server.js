@@ -10,13 +10,14 @@ var connect = require('connect');
 // http functionality
 var http = require('http');
 
-// server static files
+// serve cached static files 
 var serverStatic = require('st');
 
 
 /******************************************************/
 
 // set folder location to server files from
+// at this point, just pass request through to file system
 var static = serverStatic({path: '', url: '/'});
 
 // create middleware application
