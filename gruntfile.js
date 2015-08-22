@@ -3,25 +3,19 @@ module.exports = function(grunt) {
 	grunt.initConfig({
 		
 		pkg: grunt.file.readJSON("package.json"),
+
+			sass: {
+				options: {
+					sourceMap: true
+				},
+				dist: {
+					files: {
+						'static/scss/style.css': 'static/scss/style.scss'
+					}
+				}
+			},		
 		
-		run: {
-			node_server: {
-				cmd: "node",
-				args: [
-						'server.js'
-					]
-				
-			}
-		},
-		spawn: {
-			dpd: {
-				command: "dpd",
-				commandArgs: [
-						
-				], 
-				directory: "deployd/sportsStore/"
-			},
-		},
+	
 		parallel: {
     		web: {
 				options: {
@@ -33,6 +27,7 @@ module.exports = function(grunt) {
 				]
       		}
     	}
+		
 	});
 	
 	// using spawn because I get a spawn error from grunt-run -- probably a path issue
@@ -43,10 +38,12 @@ module.exports = function(grunt) {
 
 	// run parallel tasks	
 	grunt.loadNpmTasks('grunt-parallel');
+	
+	// sass library
+	grunt.loadNpmTasks('grunt-sass');
 
 	
-	//grunt.registerTask('live',['run:node_server','spawn:dpd']);
-	
-	grunt.registerTask('default', ["parallel"]);
+	grunt.registerTask('default', ["transpose"]);
+	//grunt.registerTask('default', ["parallel"]);
 	
 };
