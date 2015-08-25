@@ -1,5 +1,5 @@
 // log using different transports or my own logging
-console.log('base');
+console.log('utils');
 var winston = require('winston');
 winston.emitErrs = true;
 

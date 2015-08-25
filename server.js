@@ -14,7 +14,7 @@ var http = require('http');
 var serverStatic = require('st');
 
 // logger
-var logger = require('./logger.js');
+var logger = require('./utils/logger.js');
 
 //filesystem
 var filesystem = require('fs');

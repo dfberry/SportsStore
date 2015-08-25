@@ -1,7 +1,13 @@
 {
-"version": 3,
-"mappings": "AAAA,EAAE;EACD,KAAK,ECAE,OAAO;;ACCd,WAAG;EACF,gBAAgB,EDHT,OAAO;ACMd,iBAAG;EACF,KAAK,EDLD,OAAO;ECMX,gBAAgB,EDPX,OAAO;;AEGf,IAAI;EACH,KAAK,EAAE,IAAI",
-"sources": ["_body.scss","_settings.scss","_header.scss","style.scss"],
-"names": [],
-"file": "style.css"
+	"version": 3,
+	"file": "style.css",
+	"sources": [
+		"style.scss",
+		"_settings.scss",
+		"_body.scss",
+		"_header.scss"
+	],
+	"sourcesContent": [],
+	"mappings": "AEAA,EAAE,CAAA;EACD,KAAK,EDAE,OAAO,GCDZ;;ACEF,OAAO,CAAC,GAAG,CAAR;EACF,gBAAgB,EFHT,OAAO,GEEX;;AAIH,OAAO,CAAC,KAAK,CAAC,GAAG,CAAd;EACF,KAAK,EFLD,OAAO;EEMX,gBAAgB,EFPX,OAAO,GEKT;;AHFN,IAAI,CAAA;EACH,KAAK,EAAE,IAAK,GADR",
+	"names": []
 }
