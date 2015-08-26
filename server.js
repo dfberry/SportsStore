@@ -14,7 +14,9 @@ var http = require('http');
 var serverStatic = require('st');
 
 // logger
-var logger = require('./utils/logger.js');
+var storeLogger = require('./utils/logger.js');
+storeLogger.init(__dirname);
+//var morganLogger = require('morgan');
 
 //filesystem
 var filesystem = require('fs');
@@ -28,17 +30,17 @@ var filesystem = require('fs');
 // at this point, just pass request through to file system
 var staticServer = serverStatic({path: '', url: '/'});
 
-var logDirectory = __dirname + '/log';
+//var logDirectory = __dirname + '/log';
 
 // ensure log directory exists 
-filesystem.existsSync(logDirectory) || filesystem.mkdirSync(logDirectory);
+//filesystem.existsSync(logDirectory) || filesystem.mkdirSync(logDirectory);
 
 // test logger
-logger.debug("Overriding 'Express' logger");
+//logger.debug("Overriding 'Express' logger");
 
 // create a rotating write stream 
 //var accessLogStream = fileStreamRotator.getStream({
-//  filename: logDirectory + '/access-%DATE%.log',
+//  filename: logDirectory + '/%DATE%.log',
 //  frequency: 'daily',
 //  verbose: false
 //});
@@ -55,13 +57,15 @@ var app = connect();
 
 //app.use(logger('dev'));
 
-app.use(require('morgan')({ "stream": logger.stream }));
+app.use(storeLogger({ "stream": storeLogger.stream }));
 
 // respond to all requests 
 app.use(function(req, res){
 
   // process static requests
   var staticHandled = staticServer(req, res);
+  
+  storeLogger.write("test test test");
 
   // if static, return
   if (staticHandled)
