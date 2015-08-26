@@ -26,7 +26,28 @@ module.exports = function(grunt) {
 					{cmd: 'node', args: ['server.js']}
 				]
       		}
-    	}
+    	},
+		mocha_phantomjs: {
+			all: ['test/*.js'],
+			log: true
+		},
+		mocha: {
+			src: ['test/*.js'],
+			log: true
+		},
+		simplemocha: {
+			options: {
+				//globals: ['should'],
+				timeout: 3000,
+				ignoreLeaks: false//,
+				//grep: '*-test',
+				//ui: 'bdd',
+				//reporter: 'tap'
+			},
+
+			all: { src: ['test/**/*.js'] }
+		}
+						
 		
 	});
 	
@@ -36,6 +57,15 @@ module.exports = function(grunt) {
 	// sass library
 	grunt.loadNpmTasks('grunt-sass');
 
-	grunt.registerTask('default', ["sass", "parallel"]);
+    // test runner
+	grunt.loadNpmTasks('grunt-mocha');
+	grunt.loadNpmTasks('grunt-mocha-phantomjs');
+	grunt.loadNpmTasks('grunt-simple-mocha');
+
+	grunt.registerTask('default', ['sass', 'parallel']);
+	
+	grunt.registerTask('test-mocha', ['mocha']);
+	grunt.registerTask('test-phantom', ['mocha_phantomjs']);
+	grunt.registerTask('test-simple-mocha', ['simplemocha']);
 	
 };
