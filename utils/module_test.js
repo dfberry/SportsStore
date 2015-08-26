@@ -1,8 +1,4 @@
 
+var five = function(){return 5;}
 
-
-module.exports = {
-	test: function(){
-		return 5;
-	}	
-};
+module.exports.test = five;
