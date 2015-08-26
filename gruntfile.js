@@ -27,14 +27,6 @@ module.exports = function(grunt) {
 				]
       		}
     	},
-		mocha_phantomjs: {
-			all: ['test/*.js'],
-			log: true
-		},
-		mocha: {
-			src: ['test/*.js'],
-			log: true
-		},
 		simplemocha: {
 			options: {
 				//globals: ['should'],
@@ -51,21 +43,22 @@ module.exports = function(grunt) {
 		
 	});
 	
-	// run parallel tasks	
+	//  parallel tasks	
 	grunt.loadNpmTasks('grunt-parallel');
 	
 	// sass library
 	grunt.loadNpmTasks('grunt-sass');
 
     // test runner
-	grunt.loadNpmTasks('grunt-mocha');
-	grunt.loadNpmTasks('grunt-mocha-phantomjs');
 	grunt.loadNpmTasks('grunt-simple-mocha');
 
-	grunt.registerTask('default', ['sass', 'parallel']);
+    // default system
+	grunt.registerTask('default', ['sass', 'unittest', 'parallel']);
 	
-	grunt.registerTask('test-mocha', ['mocha']);
-	grunt.registerTask('test-phantom', ['mocha_phantomjs']);
-	grunt.registerTask('test-simple-mocha', ['simplemocha']);
+	// build system
+	grunt.registerTask('build', ['sass']);
+	
+	// unit test system
+	grunt.registerTask('unittest', ['simplemocha']);
 	
 };
