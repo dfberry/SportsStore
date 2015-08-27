@@ -1,11 +1,15 @@
 // log using different transports or my own logging
-//var winston = require('winston');
-//var fileSystem = require('fs');
-//var fileStreamRotator = require('file-stream-rotator');
+var winston = require('winston');
+var fileSystem = require('fs');
+var fileStreamRotator = require('file-stream-rotator');
 
+// always the log dir
+var DEFAULTLOGDIRECTORY = process.cwd() + '/log';
+
+// custom log dir
 var logDirectory;
 
-//winston.emitErrs = true;
+winston.emitErrs = true;
 
 // create a rotating write stream 
 //var accessLogStream = fileStreamRotator.getStream({
@@ -14,23 +18,7 @@ var logDirectory;
 //  verbose: false
 //});
 
-var init = function(dir){
-    //logDirectory = dir; 
-    //console.log('logDirectory' + logDirectory);
-    // ensure log directory exists 
-    //fileSystem.existsSync(dir) || fileSystem.mkdirSync(dir);
-    
-    //winston.log('logger.js::init');
-    
-    console.log('hello module');
-};
 
-/*
-var write = function(message, encoding){
-        logger.info(message);
-};
-*/
-/*
 var logger = new winston.Logger({
     transports: [
         new winston.transports.DailyRotateFile({
@@ -52,15 +40,37 @@ var logger = new winston.Logger({
     ],
     exitOnError: false
 });
-*/
 
-module.exports = init;
-//module.exports = logger;
-//module.exports = write;
-/*
-module.exports.stream = {
-    write: function(message, encoding){
+
+
+var write =  function(message, encoding){
         logger.info(message);
-    }
 };
-*/
+
+// init logger
+var init = function(dir){
+    
+    console.log('logDirectory=' + logDirectory);
+
+    // if another directory is passed in for the log file, 
+    // use it, otherwise use default log file path    
+    if (dirExists(dir))
+        logDirectory = dir; 
+    else
+        logDirectory = DEFAULTLOGDIRECTORY;
+    
+    return logDirectory;
+};
+
+// ensure log directory exists 
+var dirExists = function(dir){
+    
+    return fileSystem.existsSync(dir) || fileSystem.mkdirSync(dir);  
+};
+
+module.exports = {
+    stream: write,
+    init: init,
+    dirExists: dirExists
+};
+
