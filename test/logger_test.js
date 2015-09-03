@@ -1,4 +1,4 @@
-/// <reference path="global.js" />
+/// <reference path="../global.js" />
 
 var logger = require("../utils/logger.js")
 var assert = require("assert");
@@ -25,18 +25,9 @@ describe('logger', function() {
     // runs after each test in this block
   });	
 	
-	
-  describe('logger.dirExists()', function () {
-    it('should return true', function () {
-      assert.equal(true,logger.dirExists(process.cwd() + '/log'));
-    
+   describe('logger.write()', function () {
+    it('should write msg to log file', function () {
+      logger.write('test');
     });
-  });
-   
-   describe('logger.init()', function () {
-    it('should return log file location', function () {
-      logger.init(process.cwd() + '/log');
-    });
-  });
-
+  });   
 });

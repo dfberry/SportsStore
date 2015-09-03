@@ -59,6 +59,6 @@ module.exports = function(grunt) {
 	grunt.registerTask('build', ['sass']);
 	
 	// unit test system
-	grunt.registerTask('unittest', ['simplemocha']);
+	grunt.registerTask('test', ['simplemocha']);
 	
 };
