@@ -38,10 +38,26 @@ module.exports = function(grunt) {
 			},
 
 			all: { src: ['test/**/*.js'] }
+		},
+		gitpush: {
+			your_target: {
+				options: {
+					// Target-specific options go here. 
+					remote: 'azure',
+					branch: 'master,',
+					//all: 'true',
+					upstream: true,
+					
+				}
+			}
 		}
+		
 						
 		
 	});
+
+    // git	
+	grunt.loadNpmTasks('grunt-git');
 	
 	//  parallel tasks	
 	grunt.loadNpmTasks('grunt-parallel');
@@ -60,5 +76,8 @@ module.exports = function(grunt) {
 	
 	// unit test system
 	grunt.registerTask('test', ['simplemocha']);
+	
+	// deploy to azure website via git remote push
+	grunt.registerTask('deploy', ['gitpush'])
 	
 };
