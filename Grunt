@@ -45,22 +45,11 @@ module.exports = function(grunt) {
 					remote: 'azure'
 				}
 			}
-		},
-		csvjson: {
-			options: {
-				// Task-specific options go here. 
-			},
-			data: 'data/*.csv'
-
 		}
-		
 		
 						
 		
 	});
-
-	// csv to json
-	grunt.loadNpmTasks('grunt-csv-json');
 
     // git	
 	grunt.loadNpmTasks('grunt-git');
@@ -84,9 +73,6 @@ module.exports = function(grunt) {
 	grunt.registerTask('test', ['simplemocha']);
 	
 	// deploy to azure website via git remote push
-	grunt.registerTask('deploy-to-azure', ['gitpush']);
-	
-	// csv to json - shouldn't have to run too often
-	grunt.registerTask('csv-to-json',['csvjson']);
+	grunt.registerTask('deploy-to-azure', ['gitpush'])
 	
 };
