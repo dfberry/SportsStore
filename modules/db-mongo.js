@@ -50,8 +50,19 @@ var find = function (connectionObject, searchObject, callback){
 	});
 }
 
+var fields = function(connectionObject, callback){
+	
+	// get ojbect which has column names
+	var searchObject = {"FIELD1": "countrycode"};
+	
+	find(connectionObject,searchObject,callback, function(err, jsonResult){
+		callback(jsonResult);
+	});
+}
+
 // public functions
 module.exports = {
-	find: find
+	find: find,
+	fields: fields
 }
 
