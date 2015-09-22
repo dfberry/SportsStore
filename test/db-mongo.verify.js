@@ -5,10 +5,8 @@ function verifyFind(){
 	var connectionObject = require("../config/db.json");
 	
 	var searchObject = {
-		FIELD5: 'WA'
+		FIELD2: '98225'
 	};
-	
-	
 	
 	db.find(connectionObject,searchObject, function(result){
 			console.log(result);
