@@ -1,15 +1,46 @@
-app.controller('GeozipController', ['$scope', 'geozipService', function($scope, geozipService) {
-    $scope.fields = function (){
-        
-        return geozipService.fields(function (data) {
-               return data[0];
+app.controller('GeozipController', 
+    ['$scope','GeozipService', 
+    function($scope, GeozipService) {
+    
+    $scope.test = "testing,1,2,3";
+    $scope.fields = [];
+    $scope.searchResults = [];
+    
+    var getFields = function (){
+        console.log("GeozipController::fields");
+        GeozipService.fields(function (data) {
+                console.log(data);
+              $scope.fields = data[0];
             });
     };
-    $scope.search = function(searchfield, searchterm){
-        return geozipService.search(searchfield, searchterm, function (data) {
-                return data;
+    $scope.getSearch = function(searchfield, searchterm){
+        console.log("GeozGeozipControlleripService::search");        
+        GeozipService.search(searchfield, searchterm, function (data) {
+                console.log(data);
+                $scope.searchResults = data;
             });
     };
+    
+    $scope.dinaData = {"_id":"55f6f3f48b728b396178afca",
+                       "FIELD1":"countrycode",
+                       "FIELD2":"postalcode",
+                       "FIELD3":"placename",
+                       "FIELD4":"state_100",
+                       "FIELD5":"state_20",
+                       "FIELD6":"county_100",
+                       "FIELD7":"county_20",
+                       "FIELD8":"community_100",
+                       "FIELD9":"community_20",
+                       "FIELD10":"latitude",
+                       "FIELD11":"longitude",
+                       "FIELD12":"accuracy"
+                      };
+    
+    function init(){
+      getFields();  
+    };
+    
+    init();
 }]);
 /*
 var Geozip;

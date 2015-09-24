@@ -1,3 +1,21 @@
+app.service('GeozipService', 
+    ['$http', 
+    function($http) {
+    
+    var fields = function (callback){
+        console.log("GeozipService::fields");
+        $http.get('/latlong?type=ddl', null).success(callback);
+    };
+    var search = function(searchfield, searchterm, callback){
+        console.log("GeozipService::search");
+        $http.get('/latlong?type=search&field=' + searchfield + '&value=' + searchterm).success(callback);
+    };
+    return {
+        fields: fields,
+        search: search
+    };
+}]);
+/*
 var Geozip;
 (function (Geozip) {
     'use strict';
@@ -23,3 +41,4 @@ var Geozip;
         function ($http) { return new GeozipService($http); }
     ]);
 })(Geozip || (Geozip = {}));
+*/

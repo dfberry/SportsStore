@@ -17,7 +17,7 @@ var find = function (connectionObject, searchObject, callback){
 				collectionResult.find(searchObject, function(err,cursor){
 
 					cursor.toArray(function(err,docs){
-
+						console.log("db-mongo::find, docs object");
 						db.close();	
 						callback(docs);
  
@@ -35,6 +35,7 @@ var fields = function(connectionObject, callback){
 	var searchObject = {"FIELD1": "countrycode"};
 	
 	find(connectionObject,searchObject,callback, function(err, jsonResult){
+		console.log("db-mongo::fields,jsonResult object");
 		callback(jsonResult);
 	});
 }

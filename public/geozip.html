@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" >
+    <head>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap.min.css">
+        <link rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap-theme.min.css">
+        <title>GeoZip</title>
+    </head>
+    <body ng-app="GeoZip">GEOZIP
+        <div >
+            <div ng-controller="GeozipController">
+                {{fields}}
+                <hr>
+                <!--<div  ng-repeat="(key, data) in fields">
+                    {{key}}={{data}} <br>
+                </div>-->
+                <ddl items=fields></ddl>
+            </div>
+        </div>                         
+
+        <script src="lib/jquery/dist/jquery.min.js"></script>
+        <script src="lib/bootstrap/dist/js/bootstrap.min.js"></script>
+        <script src="lib/angular/angular.min.js"></script>
+        <script src="app/app.js"></script>
+        <script src="app/Services/GeozipService.js"></script>
+        <script src="app/Controllers/GeozipController.js"></script>
+        <script src="app/Directives/plusOne.js"></script>
+        <script src="app/Directives/Fields.js"></script>
+    </body>
+</html>
