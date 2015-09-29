@@ -2,6 +2,16 @@
 <option  value="{{key}}" ng-repeat="(key, data) in items ">{{data}}</option>
 </select>
 
+<div class="dropdown">
+  <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Dropdown Example
+  <span class="caret"></span></button>
+  <ul class="dropdown-menu" ng-model="items" >
+    <li value="{{key}}" ng-repeat="(key, data) in items "><a href="setSearchField(key)">{{data}}</a></li>
+  </ul>
+</div>
+        
+
+
 <!--<select >
 <option ng-repeat="category in fieldcategories" value="key" >value</option>-->
 <!--<div ng-repeat="x in items">

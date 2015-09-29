@@ -11,9 +11,24 @@
             <div ng-controller="GeozipController">
                 
                 <ddl items=fields></ddl>
+                <textarea name="searchTerm"></textarea>
+                <div class=".btn">Search</div>
             </div>
-        </div>                         
-
+        </div>    
+        <div class="dropdown">
+  <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Dropdown Example
+  <span class="caret"></span></button>
+  <ul class="dropdown-menu">
+    <li>HTML</li>
+    <li>CSS</li>
+    <li>JavaScript</li>
+  </ul>
+</div>
+        
+                             
+        <div ng-show="searchResult.length>0">
+            {{searchResults}}
+        </div>
         <script src="lib/jquery/dist/jquery.min.js"></script>
         <script src="lib/bootstrap/dist/js/bootstrap.min.js"></script>
         <script src="lib/angular/angular.min.js"></script>
