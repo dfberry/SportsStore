@@ -18,16 +18,17 @@ function verifyFields(){
 	var connectionObject = require("../config/db.json");
 	
 	db.fields(connectionObject, function(result){
-			console.log("length=" + result.length);
-			var myarray = _.toArray(result[0]);
-			console.log("length=" + myarray.length);
-			
-			//for(var i=0; i < myarray.length; i++){
-			//	console.log("i=" + myarray[i]);
-			//}
+			console.log(result);
+			/*			
+			for (var key in p) {
+				if (p.hasOwnProperty(key)) {
+					
+					console.log(key + " -> " + p[key]);
+				}
+			}
+*/			
 			/*
-				[ { _id: 55f6f3f48b728b39617
-					FIELD1: 'countrycode',
+				 { FIELD1: 'countrycode',
 					FIELD2: 'postalcode',
 					FIELD3: 'placename',
 					FIELD4: 'state_100',
@@ -38,7 +39,7 @@ function verifyFields(){
 					FIELD9: 'community_20',
 					FIELD10: 'latitude',
 					FIELD11: 'longitude',
-					FIELD12: 'accuracy' } ]			
+					FIELD12: 'accuracy' } 			
 			*/
 	});
 }

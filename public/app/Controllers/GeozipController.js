@@ -7,14 +7,9 @@ app.controller('GeozipController',
     $scope.searchResults = [];
     
     var getFields = function (){
-        console.log("GeozipController::fields");
         GeozipService.fields(function (data) {
-                console.log(data);
-                var indexOfId = data.IndexOf("55f6f3f48b728b396178afca");
-                
-                console.log("index = " + indexOfId);
-                $scope.fields = data.splice(indexOfId, 1);
-            });
+            $scope.fields = data;
+        });
     };
     $scope.getSearch = function(searchfield, searchterm){
         console.log("GeozGeozipControlleripService::search");        

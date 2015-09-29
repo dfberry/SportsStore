@@ -17,8 +17,6 @@ var find = function (connectionObject, searchObject, callback){
 				collectionResult.find(searchObject, function(err,cursor){
 
 					cursor.toArray(function(err,docs){
-						console.log("db-mongo::find, docs object");
-						console.log(docs);
 						db.close();	
 						callback(docs);
  
@@ -35,9 +33,15 @@ var fields = function(connectionObject, callback){
 	// get ojbect which has column names
 	var searchObject = {"FIELD1": "countrycode"};
 	
-	find(connectionObject,searchObject,callback, function(err, jsonResult){
-		console.log("db-mongo::fields,jsonResult object");
-		callback(jsonResult);
+	find(connectionObject,searchObject, function(jsonResult){
+		
+		if (jsonResult.length==1){
+			var p=jsonResult[0];
+			delete p['_id'];
+			callback(p);
+		} else {
+			callback(jsonResult);
+ 		}
 	});
 }
 
