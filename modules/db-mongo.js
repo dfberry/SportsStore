@@ -18,6 +18,7 @@ var find = function (connectionObject, searchObject, callback){
 
 					cursor.toArray(function(err,docs){
 						console.log("db-mongo::find, docs object");
+						console.log(docs);
 						db.close();	
 						callback(docs);
  

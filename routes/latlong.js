@@ -29,6 +29,9 @@ router.get('/', function(req, res, next) {
     
   } else if(requestType=='ddl'){
       search.fields(dbConfig, function(results){
+        
+        
+        
         res.send(results);
       });    
   } else {

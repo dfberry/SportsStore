@@ -10,7 +10,10 @@ app.controller('GeozipController',
         console.log("GeozipController::fields");
         GeozipService.fields(function (data) {
                 console.log(data);
-              $scope.fields = data[0];
+                var indexOfId = data.IndexOf("55f6f3f48b728b396178afca");
+                
+                console.log("index = " + indexOfId);
+                $scope.fields = data.splice(indexOfId, 1);
             });
     };
     $scope.getSearch = function(searchfield, searchterm){
@@ -21,6 +24,7 @@ app.controller('GeozipController',
             });
     };
     
+    /*
     $scope.dinaData = {"_id":"55f6f3f48b728b396178afca",
                        "FIELD1":"countrycode",
                        "FIELD2":"postalcode",
@@ -35,6 +39,7 @@ app.controller('GeozipController',
                        "FIELD11":"longitude",
                        "FIELD12":"accuracy"
                       };
+                   */
     
     function init(){
       getFields();  

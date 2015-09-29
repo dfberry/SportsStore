@@ -1,4 +1,5 @@
 var db = require("../modules/db-mongo.js");
+var _ = require("../node_modules/underscore/underscore");
 
 function verifyFind(){
 
@@ -17,7 +18,13 @@ function verifyFields(){
 	var connectionObject = require("../config/db.json");
 	
 	db.fields(connectionObject, function(result){
-			console.log(result);
+			console.log("length=" + result.length);
+			var myarray = _.toArray(result[0]);
+			console.log("length=" + myarray.length);
+			
+			//for(var i=0; i < myarray.length; i++){
+			//	console.log("i=" + myarray[i]);
+			//}
 			/*
 				[ { _id: 55f6f3f48b728b39617
 					FIELD1: 'countrycode',
@@ -36,5 +43,5 @@ function verifyFields(){
 	});
 }
 
-verifyFind();
+//verifyFind();
 verifyFields();
