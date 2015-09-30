@@ -8,24 +8,29 @@
     </head>
     <body ng-app="GeoZip">
         <div >
-            <div ng-controller="GeozipController">
-                <div >
-                <div>
-                    <div style="float: left;" items="fields">
-                        <ul class="list-group" ng-model="fields">
-                            <li class="list-group-item" value="{{key}}" ng-repeat="(key, data) in fields" ng-click="(setSearchField(key))">{{data}}
-                        </ul>
+            <div class="row" ng-controller="GeozipController">
+                <div class="col-sm-4" style="background-color:grey">
+                    <div  class="form-group"  items="fields">
                         
+                        <div ng-model="fields">
+                            <div ng-repeat="(key, data) in fields">
+                                <input name="FIELD" type="radio" ng-click="(setSearchField(key))">{{data}}<br/>
+                            </div>
+                        </div>
                     </div>
-                    <textarea ng-model="searchTerm"></textarea>
-                        <div class="btn btn-default" ng-click="search()">
                     <div>
+                        <div><textarea ng-model="searchTerm"></textarea></div>
+                        <div class="btn btn-default" ng-click="search()">Search</div>
+                    </div>
+                </div>
+                <div class="col-sm-6" style="background-color:blue">
+                    <div  >
                         <div>Results</div>
                         <div ng-repeat="item in searchResults">
                             <li class="list-group-item" ng-repeat="(key, data) in item" >{{key}}: {{data}}
-
+    
                         </div>
-                    </div>
+                    </div>                        
                 </div>
             </div>
         </div>    
