@@ -1,15 +1,12 @@
 var db = require("../modules/db-mongo.js");
 var _ = require("../node_modules/underscore/underscore");
 
-function verifyFind(){
+function verifysearch(){
 
 	var connectionObject = require("../config/db.json");
 	
-	var searchObject = {
-		FIELD2: '98225'
-	};
-	
-	db.find(connectionObject,searchObject, function(result){
+	db.search(connectionObject,"FIELD2","98225", function(result){
+			console.log("db-mongo.verify::verifysearch - result");
 			console.log(result);
 	});
 }
@@ -19,14 +16,7 @@ function verifyFields(){
 	
 	db.fields(connectionObject, function(result){
 			console.log(result);
-			/*			
-			for (var key in p) {
-				if (p.hasOwnProperty(key)) {
-					
-					console.log(key + " -> " + p[key]);
-				}
-			}
-*/			
+		
 			/*
 				 { FIELD1: 'countrycode',
 					FIELD2: 'postalcode',
@@ -44,5 +34,5 @@ function verifyFields(){
 	});
 }
 
-//verifyFind();
-verifyFields();
+verifysearch();
+//verifyFields();

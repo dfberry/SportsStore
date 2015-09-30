@@ -6,27 +6,37 @@
         <link rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap-theme.min.css">
         <title>GeoZip</title>
     </head>
-    <body ng-app="GeoZip">GEOZIP
+    <body ng-app="GeoZip">
         <div >
             <div ng-controller="GeozipController">
-                
-                <ddl items=fields></ddl>
-                <textarea name="searchTerm"></textarea>
-                <div class=".btn">Search</div>
+                <div >
+                <div>
+                    <div style="float: left;" items="fields">
+                        <ul class="list-group" ng-model="fields">
+                            <li class="list-group-item" value="{{key}}" ng-repeat="(key, data) in fields" ng-click="(setSearchField(key))">{{data}}
+                        </ul>
+                        
+                    </div>
+                    <textarea ng-model="searchTerm"></textarea>
+                        <div class="btn btn-default" ng-click="search()">
+                    <div>
+                        <div>Results</div>
+                        <div ng-repeat="item in searchResults">
+                            <li class="list-group-item" ng-repeat="(key, data) in item" >{{key}}: {{data}}
+
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>    
         
                              
-        <div ng-show="searchResult.length>0">
-            {{searchResults}}
-        </div>
+
         <script src="lib/jquery/dist/jquery.min.js"></script>
         <script src="lib/bootstrap/dist/js/bootstrap.min.js"></script>
         <script src="lib/angular/angular.min.js"></script>
         <script src="app/app.js"></script>
         <script src="app/Services/GeozipService.js"></script>
         <script src="app/Controllers/GeozipController.js"></script>
-        <script src="app/Directives/plusOne.js"></script>
-        <script src="app/Directives/Fields.js"></script>
     </body>
 </html>

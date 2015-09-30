@@ -13,14 +13,18 @@ app.controller('GeozipController',
             $scope.fields = data;
         });
     };
-    $scope.getSearch = function(searchfield, searchterm){
-        console.log("GeozGeozipControlleripService::search");        
-        GeozipService.search(searchfield, searchterm, function (data) {
+    $scope.search = function(){
+        console.log("GeozGeozipControlleripService::search"); 
+        console.log("searchField=" + $scope.searchField);
+        console.log("searchTerm=" + $scope.searchTerm);       
+        GeozipService.search($scope.searchField, $scope.searchTerm, function (data) {
+                console.log("GeozipControlleripService::search - data"); 
                 console.log(data);
                 $scope.searchResults = data;
             });
     };
     $scope.setSearchField = function(newSearchField){
+        console.log("GeozipControlleripService::setSearchField"); 
         console.log("newSearchField = " + newSearchField);
         $scope.searchField = newSearchField;
     };

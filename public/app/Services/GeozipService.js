@@ -8,6 +8,8 @@ app.service('GeozipService',
     };
     var search = function(searchfield, searchterm, callback){
         console.log("GeozipService::search");
+        console.log("GeozipService::search - searchfield=" + searchfield);
+        console.log("GeozipService::search - searchterm=" + searchterm);
         $http.get('/latlong?type=search&field=' + searchfield + '&value=' + searchterm).success(callback);
     };
     return {

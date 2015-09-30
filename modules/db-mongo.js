@@ -8,24 +8,75 @@ var MongoClient = require('mongodb').MongoClient;
 // searchObject example {FIELD5:'WA'}
 var find = function (connectionObject, searchObject, callback){
 
+	console.log("db-mongo::find");
+	console.log(connectionObject);
+	console.log(searchObject);
+
 	MongoClient.connect(connectionObject.url, function(err, db) {
 		
+		console.log("db");
+		console.log(db);
+		
 		db.authenticate(connectionObject.user,connectionObject.pwd, function(err, authResult){
+			
+			console.log("authResult");
+			console.log(authResult);
 
 			db.collection(connectionObject.collection, function(err,collectionResult){
-				
-				collectionResult.find(searchObject, function(err,cursor){
 
-					cursor.toArray(function(err,docs){
-						db.close();	
-						callback(docs);
- 
- 					});
-				});		
+				console.log("collectionResult");				
+				console.log(collectionResult);
+
+				if (collectionResult != undefined){
+					
+								
+					collectionResult.find(searchObject, function(err,cursor){
+						
+						console.log("cursor");
+						console.log(cursor);
+						
+					
+						cursor.toArray(function(err,docs){
+							
+							console.log("docs");
+							console.log(docs);
+							
+							db.close();	
+							callback(docs);
+	
+						});
+					});	
+				}
+				else{
+					
+					console.log("collectionResult is empty");
+					callback(null);
+				}	
 			});
 			
 		});
 	});
+}
+
+var search = function(connectionObject, searchTerm, searchValue, callback){
+	
+	console.log("db-mongo::search - searchTerm " + searchTerm);
+    console.log("db-mongo::search - searchValue " + searchValue);
+	
+	// get ojbect which has column names
+	var searchObject = {};
+	searchObject[searchTerm] = searchValue;
+	//var jsonSearchObject = searchObject;
+
+	console.log(searchObject);
+    //console.log(jsonSearchObject);
+
+	
+	find(connectionObject,searchObject, function(jsonResult){
+		callback(jsonResult);
+		//callback();
+	});
+	
 }
 
 var fields = function(connectionObject, callback){
@@ -48,6 +99,7 @@ var fields = function(connectionObject, callback){
 // public functions
 module.exports = {
 	find: find,
-	fields: fields
+	fields: fields,
+	search: search
 }
 

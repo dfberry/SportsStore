@@ -15,15 +15,15 @@ router.get('/', function(req, res, next) {
   if (requestType=='search'){
 
     //correctly formed json ojbect
-    var fieldSearch = req.query.field;
-    var valueSearch = req.query.value.toString()
+    var searchTerm = req.query.field;
+    var searchValue = req.query.value.toString()
   
-    var searchObject = {};
-    var columnName = fieldSearch;
-  
-    searchObject[columnName] = valueSearch;
+    console.log("latlong route search - searchTerm=" + searchTerm);
+    console.log("latlong route search - searchValue=" + searchValue);
     
-    search.find(dbConfig, searchObject, function (results) {
+    search.search(dbConfig, searchTerm, searchValue, function (results) {
+      console.log("latlong route - search results");
+      console.log(results);
       res.send(results);
     });
     
