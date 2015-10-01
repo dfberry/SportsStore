@@ -9,7 +9,7 @@
     <body ng-app="GeoZip">
         <div >
             <div class="row" ng-controller="GeozipController">
-                <div class="col-sm-4" style="background-color:grey">
+                <div class="col-sm-2" style="background-color:ltgrey">
                     <div  class="form-group"  items="fields">
                         
                         <div ng-model="fields">
@@ -23,14 +23,29 @@
                         <div class="btn btn-default" ng-click="search()">Search</div>
                     </div>
                 </div>
-                <div class="col-sm-6" style="background-color:blue">
-                    <div  >
-                        <div>Results</div>
-                        <div ng-repeat="item in searchResults">
-                            <li class="list-group-item" ng-repeat="(key, data) in item" >{{key}}: {{data}}
-    
-                        </div>
-                    </div>                        
+                <div class="col-sm-10" style="background-color:yellow">
+                    <div class="label label-default">Results: {{searchResults.length}}</div>
+                    <div class="row">
+                        <div>#</div>
+                        <div class="col-sm-1">Country</div> 
+                        <div class="col-sm-1">Postal Code</div>
+                        <div class="col-sm-1">City</div>
+                        <div class="col-sm-1">State</div>
+                        <div class="col-sm-2">County</div>
+                        <div class="col-sm-1">Lat</div>           
+                        <div class="col-sm-1">Long</div> 
+                    </div>
+                    <div class="row" ng-repeat="item in searchResults">
+                        <div>{{$index + 1}}</div>
+                        <div class="col-sm-1">{{item["FIELD1"]}}</div> 
+                        <div class="col-sm-1">{{item["FIELD2"]}}</div>
+                        <div class="col-sm-1">{{item["FIELD3"]}}</div>
+                        <div class="col-sm-1">{{item["FIELD4"]}}</div>
+                        <div class="col-sm-2">{{item["FIELD6"]}}</div>
+                        <div class="col-sm-1">{{item["FIELD10"]}}</div>           
+                        <div class="col-sm-1">{{item["FIELD11"]}}</div>  
+                            <!--<div class="col-sm-1" ng-repeat="(key, data) in item">{{data}}</div>-->
+                    </div>
                 </div>
             </div>
         </div>    

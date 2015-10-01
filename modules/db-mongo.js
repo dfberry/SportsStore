@@ -9,23 +9,23 @@ var MongoClient = require('mongodb').MongoClient;
 var find = function (connectionObject, searchObject, callback){
 
 	console.log("db-mongo::find");
-	console.log(connectionObject);
-	console.log(searchObject);
+	//console.log(connectionObject);
+	//console.log(searchObject);
 
 	MongoClient.connect(connectionObject.url, function(err, db) {
 		
 		console.log("db");
-		console.log(db);
+		//console.log(db);
 		
 		db.authenticate(connectionObject.user,connectionObject.pwd, function(err, authResult){
 			
 			console.log("authResult");
-			console.log(authResult);
+			//console.log(authResult);
 
 			db.collection(connectionObject.collection, function(err,collectionResult){
 
 				console.log("collectionResult");				
-				console.log(collectionResult);
+				//console.log(collectionResult);
 
 				if (collectionResult != undefined){
 					
@@ -33,13 +33,13 @@ var find = function (connectionObject, searchObject, callback){
 					collectionResult.find(searchObject, function(err,cursor){
 						
 						console.log("cursor");
-						console.log(cursor);
+						//console.log(cursor);
 						
 					
 						cursor.toArray(function(err,docs){
 							
 							console.log("docs");
-							console.log(docs);
+							//console.log(docs);
 							
 							db.close();	
 							callback(docs);
@@ -81,6 +81,8 @@ var search = function(connectionObject, searchTerm, searchValue, callback){
 
 var fields = function(connectionObject, callback){
 	
+	console.log("db-mongo::fields");
+	
 	// get ojbect which has column names
 	var searchObject = {"FIELD1": "countrycode"};
 	
@@ -90,7 +92,9 @@ var fields = function(connectionObject, callback){
 			var p=jsonResult[0];
 			delete p['_id'];
 			callback(p);
+			console.log("db-mongo::fields - done");
 		} else {
+			console.log("db-mongo::fields - done");
 			callback(jsonResult);
  		}
 	});
