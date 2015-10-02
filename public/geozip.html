@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <link rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap.min.css">
         <link rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap-theme.min.css">
-        <link rel="stylesheet" href="stylesheets/dfberry-io.css">
+        <!--link rel="stylesheet" href="stylesheets/dfberry-io.css"-->
         <title>GeoZip</title>
     </head>
     <body ng-app="GeoZip" >
@@ -25,27 +25,23 @@
                     </div>
                 </div>
                 <div class="col-sm-10" style="background-color:yellow">
-                    <div class="label label-default">Results: {{searchResults.length}}</div>
-                    <div class="row">
-                        <div>#</div>
-                        <div class="col-sm-1">Country</div> 
-                        <div class="col-sm-1">Postal Code</div>
-                        <div class="col-sm-1">City</div>
-                        <div class="col-sm-1">State</div>
-                        <div class="col-sm-2">County</div>
-                        <div class="col-sm-1">Lat</div>           
-                        <div class="col-sm-1">Long</div> 
-                    </div>
-                    <div class="row" ng-repeat="item in searchResults">
-                        <div>{{$index + 1}}</div>
-                        <div class="col-sm-1">{{item["FIELD1"]}}</div> 
-                        <div class="col-sm-1">{{item["FIELD2"]}}</div>
-                        <div class="col-sm-1">{{item["FIELD3"]}}</div>
-                        <div class="col-sm-1">{{item["FIELD4"]}}</div>
-                        <div class="col-sm-2">{{item["FIELD6"]}}</div>
-                        <div class="col-sm-1">{{item["FIELD10"]}}</div>           
-                        <div class="col-sm-1">{{item["FIELD11"]}}</div>  
-                            <!--<div class="col-sm-1" ng-repeat="(key, data) in item">{{data}}</div>-->
+                    <div class="container-fluid">
+                        <div class="label label-default">Results: {{searchResults.length}}</div>
+                        <div class="row">
+                            <div class="col-sm-1">#</div>
+                            <div class="col-sm-2">Country - Postal Code</div>
+                            <div class="col-sm-4">City, State</div>
+                            <div class="col-sm-2">County</div>
+                            <div class="col-sm-3">Lat - Long</div> 
+                        </div>
+                        <div class="row" ng-repeat="item in searchResults">
+                            <div class="col-sm-1">{{$index + 1}}</div>
+                            <div class="col-sm-2">{{item["FIELD1"]}} - {{item["FIELD2"]}}</div>
+                            <div class="col-sm-4">{{item["FIELD3"]}},{{item["FIELD4"]}}</div>
+                            <div class="col-sm-2">{{item["FIELD6"]}}</div>
+                            <div class="col-sm-3">{{item["FIELD10"]}} - {{item["FIELD11"]}}</div>  
+                                <!--<div class="col-sm-1" ng-repeat="(key, data) in item">{{data}}</div>-->
+                        </div>
                     </div>
                 </div>
             </div>
