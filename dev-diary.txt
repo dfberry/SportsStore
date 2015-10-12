@@ -1,0 +1,2 @@
+Oct 12, 2015
+Had to install jasmine and karma libraries with sudo and global in order for tests to run
