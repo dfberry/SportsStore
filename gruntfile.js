@@ -52,6 +52,20 @@ module.exports = function(grunt) {
 			},
 			data: 'data/*.csv'
 
+		},
+		karma: {
+			unit: {
+				options: {
+					frameworks: ['jasmine'],
+					//singleRun: true,
+					browsers: ['Chrome'],
+					files: [
+						'public/lib/angular/angular.js',
+						'public/lib/angular/angular-mocks.js',
+						'public/testApp/tests/*.js'
+					]
+				}
+			}
 		}
 		
 		
@@ -72,7 +86,11 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-sass');
 
     // test runner
-	grunt.loadNpmTasks('grunt-simple-mocha');
+	//grunt.loadNpmTasks('grunt-simple-mocha');
+
+	// angular unit test with karma & jasmine
+	grunt.loadNpmTasks('grunt-karma');
+
 
     // default system
 	grunt.registerTask('default', ['sass', 'unittest', 'parallel']);
@@ -81,7 +99,10 @@ module.exports = function(grunt) {
 	grunt.registerTask('build', ['sass']);
 	
 	// unit test system
-	grunt.registerTask('test', ['simplemocha']);
+	//grunt.registerTask('test', ['simplemocha']);
+	
+	// http://paislee.io/testing-angularjs-with-grunt-karma-and-jasmine/
+	grunt.registerTask('angular-unit-test',['karma']);
 	
 	// deploy to azure website via git remote push
 	grunt.registerTask('deploy-to-azure', ['gitpush']);
