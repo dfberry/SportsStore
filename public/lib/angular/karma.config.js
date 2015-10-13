@@ -18,10 +18,12 @@ module.exports = function(config) {
       'angular.js',
       'angular-mocks.js',
       '../../testApp/app.js',
-      //'../../testApp/Controllers/angularTestController.js',
-      //'../../testApp/tests/controller.test.js',
+      '../../testApp/Controllers/angularTestController.js',
+      '../../testApp/tests/controller.test.js',
       '../../testApp/Controllers/angularAjaxTestController.js',
-      '../../testApp/tests/controllerAjax.test.js'
+      '../../testApp/tests/controllerAjax.test.js',
+      '../../testApp/Controllers/angularTimeTestController.js',
+      '../../testApp/tests/controllerTime.test.js'
     ],
 
 
