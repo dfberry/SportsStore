@@ -22,9 +22,9 @@ describe("Controller Test", function(){
 		expect(mockScope.counter).toEqual(0);
 	})
 	
-	//it("Increments counter", function(){
-	//	mockScope.incrementCounter();
-	//	expect(mockScope.counter).toEqual(1);
-	//})
+	it("Increments counter", function(){
+		mockScope.incrementCounter();
+		expect(mockScope.counter).toEqual(1);
+	})
 	
 });
