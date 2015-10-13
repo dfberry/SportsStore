@@ -23,7 +23,9 @@ module.exports = function(config) {
       '../../testApp/Controllers/angularAjaxTestController.js',
       '../../testApp/tests/controllerAjax.test.js',
       '../../testApp/Controllers/angularTimeTestController.js',
-      '../../testApp/tests/controllerTime.test.js'
+      '../../testApp/tests/controllerTime.test.js',
+      '../../testApp/Controllers/angularLogTestController.js',
+      '../../testApp/tests/controllerLog.test.js'
     ],
 
 

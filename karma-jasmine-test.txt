@@ -1,1 +1,1 @@
-karma start public/lib/angular/karma.config.js
+karma start public/lib/angular/karma.config.js --log-level=DEBUG
