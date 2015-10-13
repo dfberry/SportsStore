@@ -56,14 +56,15 @@ module.exports = function(grunt) {
 		karma: {
 			unit: {
 				options: {
+					configFile: 'public/lib/angular/karma.config.js',
 					frameworks: ['jasmine'],
-					//singleRun: true,
-					browsers: ['Chrome'],
-					files: [
+					singleRun: true,
+					browsers: ['PhantomJS']//,
+					/*files: [
 						'public/lib/angular/angular.js',
 						'public/lib/angular/angular-mocks.js',
 						'public/testApp/tests/*.js'
-					]
+					]*/
 				}
 			}
 		}
